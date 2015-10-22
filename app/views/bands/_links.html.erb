@@ -1,0 +1,6 @@
+<a href='<%= edit_band_url(band) %>'>Edit band</a>
+<form action='<%= band_url(band) %>' method='POST'>
+  <input type='hidden' name='_method' value='DELETE'>
+  <button>Delete band</button>
+</form>
+<a href='<%= bands_url %>'>Bands index</a>

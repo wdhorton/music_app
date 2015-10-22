@@ -1,0 +1,13 @@
+<h1><%= @track %></h1>
+
+<p>Recorded by: <a href='<%= band_url(@track.band) %>'><%= @track.band %></a></p>
+<p>On the album: <a href='<%= album_url(@track.album) %>'><%= @track.album %></a></p>
+
+<p>Lyrics:</p>
+<p><%= @track.lyrics %></p>
+
+<a href='<%= edit_track_url(@track) %>'>Edit track</a>
+<form action='<%= track_url(@track) %>' method='POST'>
+  <input type='hidden' name='_method' value='DELETE'>
+  <button>Delete track</button>
+</form>

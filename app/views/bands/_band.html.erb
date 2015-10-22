@@ -1,0 +1,7 @@
+<h3><a href='<%= band_url(band) %>'><%= band %></a></h3>
+
+<ul>
+<% band.albums.each do |album| %>
+  <li><a href='<%= album_url(album) %>'><%= album %></a></li>
+<% end %>
+</ul>
