@@ -8,5 +8,12 @@
 
 <%= yield %>
 
+<% if current_user %>
+<form method="POST" action='<%= session_url  %>'>
+  <input type='hidden' name='_method' value='DELETE'>
+  <button>Log out</button>
+</form>
+<% end %>
+
 </body>
 </html>

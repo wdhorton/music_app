@@ -1,10 +1,10 @@
-<h1>Make a new user!</h1>
+<h1>Sign in!</h1>
 
-<form method="POST" action='<%= users_url %>'>
+<form method="POST" action='<%= session_url %>'>
   <!-- <input type=hidden value='<%= form_authenticity_token %>'> -->
 
   <label for='email'>Email:</label>
-  <input id="email" type="text" name='user[email]' value='<%= @user.email %>'>
+  <input id="email" type="text" name='user[email]'>
   <br>
 
   <label for='password'>Password:</label>
