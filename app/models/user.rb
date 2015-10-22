@@ -6,6 +6,14 @@ class User < ActiveRecord::Base
 
   # before_validation :ensure_session_token
 
+  def self.find_by_credentials(email, password)
+    user = User.find_by_email(email)
+
+    return nil unless user
+
+    user.password_digest.is_password?(password) ? user : nil
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -15,7 +23,7 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(super)
   end
 
-  
+
 
   private
 
