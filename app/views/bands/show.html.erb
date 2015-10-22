@@ -1,9 +1,13 @@
 <%= render 'band', band: @band %>
 
+<% if current_user.admin %>
 <a href='<%= new_band_album_url(@band) %>'>Add an album</a><br>
 <a href='<%= edit_band_url(@band) %>'>Edit band</a>
 <form action='<%= band_url(@band) %>' method='POST'>
   <input type='hidden' name='_method' value='DELETE'>
+  <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
   <button>Delete band</button>
 </form>
+<% end %>
+
 <a href='<%= bands_url %>'>Bands index</a>

@@ -19,3 +19,5 @@ end
   album = Album.all.sample
   Track.create!(title: "Track #{i}", album_id: album.id, lyrics: "Na na na", kind: "regular")
 end
+
+User.create!(email: "superuser", password: "password", activated: true, admin: true)

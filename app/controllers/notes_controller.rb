@@ -13,7 +13,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     track = @note.track
 
-    if @note.user = current_user
+    if @note.user = current_user || admin?
       @note.destroy
       redirect_to track_url(track)
     else

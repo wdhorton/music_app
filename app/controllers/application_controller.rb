@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  
+
   helper_method :current_user
   before_action :ensure_logged_in
 
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def admin?
+    current_user.admin
   end
 
   def login_user!(user)
@@ -28,6 +32,13 @@ class ApplicationController < ActionController::Base
   def ensure_logged_in
     unless logged_in?
       redirect_to new_session_url
+    end
+  end
+
+  def check_if_admin
+    unless admin?
+      flash[:errors] = ["That page only accessible to admins."]
+      redirect_to user_url(current_user)
     end
   end
 end

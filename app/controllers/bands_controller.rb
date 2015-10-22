@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
 
+  before_action :check_if_admin, only: [:create, :update, :destroy]
+
   def index
     @bands = Band.all.sort_by(&:name)
     render :index

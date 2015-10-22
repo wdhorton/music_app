@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
 
   before_action :ensure_logged_in, except: [:new, :create, :activate]
+  before_action :check_if_admin, only: [:index]
+
+  def index
+    @users = User.all
+    render :index
+  end
 
   def new
     @user = User.new

@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
 
+  before_action :check_if_admin, only: [:create, :update, :destroy]
+
   def new
     @album = Album.new(band_id: params[:band_id])
     @bands = Band.all.sort_by(&:name)
