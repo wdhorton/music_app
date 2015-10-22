@@ -14,11 +14,15 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    if user
+    if user && user.activated
       login_user!(user)
       redirect_to user_url(user)
     else
-      flash.now[:errors] = ["Incorrect username and/or password."]
+      if user && !user.activated
+        flash.now[:errors] = ["You must first activate your account."]
+      else
+        flash.now[:errors] = ["Incorrect username and/or password."]
+      end
       render :new
     end
   end
