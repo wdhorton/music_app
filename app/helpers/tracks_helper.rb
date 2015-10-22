@@ -6,7 +6,7 @@ module TracksHelper
   end
 
   def formatted_lyrics(lyrics)
-    lyrics.split('\n').map { |line| "&#9835; " + h(line) }.join('\n')
+    lyrics.split("\n").map { |line| "&#9835; " + h(line) }.join("\n")
   end
 
 end
