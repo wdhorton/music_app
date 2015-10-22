@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'sessions#new'
+
   resources :users, only: [:create, :new, :show]
 
   resource :session, only: [:create, :new, :destroy]
@@ -12,4 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :tracks, except: [:new, :index]
+
+  resources :notes, except: [:new, :index]
 end

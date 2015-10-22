@@ -1,0 +1,11 @@
+<p>Author: <%= note.user.email %></p>
+<p>Note: <%= note.content %></p>
+<p>Created <%= time_ago_in_words(note.created_at) %> ago</p>
+
+<% if note.user == current_user %>
+<form action='<%= note_url(note) %>' method="POST">
+  <input type=hidden name='_method' value="DELETE">
+  <button>Delete note</button>
+</form>
+<% end %>
+<br>

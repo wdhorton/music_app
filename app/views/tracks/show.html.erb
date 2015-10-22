@@ -4,7 +4,14 @@
 <p>On the album: <a href='<%= album_url(@track.album) %>'><%= @track.album %></a></p>
 
 <p>Lyrics:</p>
-<p><%= @track.lyrics %></p>
+<p><%= ugly_lyrics(@track.lyrics) %></p>
+<br>
+
+<% @track.notes.each do |note| %>
+  <%= render 'notes/note', note: note %>
+<% end %>
+
+<%= render 'notes/form' %>
 
 <a href='<%= edit_track_url(@track) %>'>Edit track</a>
 <form action='<%= track_url(@track) %>' method='POST'>

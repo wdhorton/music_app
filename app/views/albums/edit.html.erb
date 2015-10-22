@@ -1,27 +1,5 @@
 <h1>Edit an album</h1>
 
-<form action='<%= album_url(@album) %>' method='POST'>
-  <input type='hidden' name='_method' value='PATCH'>
+<%= render 'shared/errors' %>
 
-  <label for='title'>Title:</label>
-  <input id='title' type='text' name='album[title]' value='<%= @album.title %>'>
-  <br>
-
-  <label for='band'>Band:</label>
-  <select id='band' name='album[band_id]'>
-    <% @bands.each do |band| %>
-    <option value='<%= band.id %>' <%= 'selected' if @album.band == band  %>><%= band %></option>
-    <% end %>
-  </select>
-  <br>
-
-  <input id = 'recorded-studio' type='radio' name='album[recorded]' value='studio' <%= 'checked' if @album.recorded == 'studio'  %>
-  <label for='recorded-studio'>Studio</label>
-  <br>
-
-  <input id = 'recorded-live' type='radio' name='album[recorded]' value='live' <%= 'checked' if @album.recorded == 'live'  %>
-  <label for='recorded-live'>Live</label>
-  <br>
-
-  <button>Submit edits</button>
-</form>
+<%= render 'form', album: @album, bands: @bands %>
